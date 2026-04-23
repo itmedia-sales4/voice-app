@@ -340,8 +340,7 @@ export default function App() {
 
     const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${key}`;
     const payload = {
-      contents: [{ parts: [{ text }] }],
-      systemInstruction: { parts: [{ text: systemPromptText }] },
+      contents: [{ parts: [{ text: `${systemPromptText}\n\n${text}` }] }],
     };
 
     const fetchWithRetry = async (retries = 5, delay = 1000) => {
